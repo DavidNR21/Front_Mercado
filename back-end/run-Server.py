@@ -1,14 +1,10 @@
 from flask import *
 from esquema import *
 from playhouse.shortcuts import model_to_dict
-from produto import *
-from esquema import Enderecos
+
 from flask_cors import CORS
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from peewee import IntegrityError
-from produto import Promocao 
-
 
 
 
@@ -451,6 +447,209 @@ def obter_links_categoria_rota(categoria):
         return jsonify(links_categoria)
     else:
         return jsonify({"error": "Categoria não encontrada"}), 404
+
+
+# Rotas de Produtos filtrando as categorias
+
+@app.route('api/Higiene/produtos', methods=['GET'])
+def produto_higiene():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Higiene')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Animais/produtos', methods=['GET'])
+def produto_animais():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Animais')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Frescos/produtos', methods=['GET'])
+def produto_frescos():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Frescos')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Bebida/produtos', methods=['GET'])
+def produto_bebidas():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Bebida')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+
+@app.route('/api/Mercearia/produtos', methods=['GET'])
+def produto_mercearia():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Mercearia')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Limpeza/produtos', methods=['GET'])
+def produto_limpeza():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Limpeza')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Congelado/produtos', methods=['GET'])
+def produto_congelado():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Congelado')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Saude/produtos', methods=['GET'])
+def produto_saude():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Saude')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Padaria/produtos', methods=['GET'])
+def produto_padaria():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Padaria')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+    
+
+@app.route('/api/Organicos/produtos', methods=['GET'])
+def produto_organicos():
+    try:
+        # Exemplo de busca de todos os produtos
+        subconsulta = Categorias.select(Categorias.id).where(Categorias.descricao == 'Organicos')
+
+        produtos = Produtos.select().where(Produtos.categoria == subconsulta)
+
+        # Converta os objetos do modelo para dicionários para resposta JSON
+        produtos_dict = [model_to_dict(produto) for produto in produtos]
+
+           
+           
+        return jsonify(produtos_dict), 200
+
+    except Exception as e:
+            error_message = {"error": str(e)}
+            return jsonify(error_message), 500
+
+
   
 @app.route('/')
 def index():
